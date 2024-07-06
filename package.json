@@ -11,6 +11,10 @@
     "image",
     "upload"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vedo18/image-upload-aws_S3-library.git"
+  },
   "author": "Saket Vats",
   "license": "MIT",
   "description": "A library to upload images to Amazon S3",
