@@ -1,6 +1,6 @@
-const uploadRoutes = require('./routes/image-route');
+const uploadController = require('./controllers/uploadController');
 
-module.exports = uploadRoutes;
+module.exports = uploadController;
 
 //testing through server
 // const express = require('express');

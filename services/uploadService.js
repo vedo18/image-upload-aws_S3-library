@@ -44,4 +44,6 @@ const uploadFileToS3 = async ({
     }
 };
 
-module.exports = uploadFileToS3;
+module.exports = {
+    uploadFileToS3,
+};

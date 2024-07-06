@@ -1,11 +1,14 @@
-const uploadFileToS3 = require('../services/uploadService');
+const { uploadFileToS3 } = require('../services/uploadService.js');
 
-const uploadController = async (req, res) => {
-    const { accessKeyId, secretAccessKey, region, bucketName, files } =
-        req.body;
-
+const uploadFiles = async ({
+    accessKeyId,
+    secretAccessKey,
+    region,
+    bucketName,
+    files,
+}) => {
     if (!files || !files.length) {
-        return res.status(400).json({ error: 'Files array is required' });
+        throw new Error('Files array is required');
     }
 
     try {
@@ -42,13 +45,12 @@ const uploadController = async (req, res) => {
 
         const uploadedFiles = await Promise.all(uploadPromises);
 
-        res.status(200).json({
-            message: 'Files uploaded successfully',
-            uploadedFiles,
-        });
+        return uploadedFiles;
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        throw new Error(`Error uploading files: ${error.message}`);
     }
 };
 
-module.exports = uploadController;
+module.exports = {
+    uploadFiles,
+};
